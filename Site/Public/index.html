@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seja uma business woman">
+    <title>BW Style</title>
+    <link rel="stylesheet" type="text/css" href="css/Home.css">
+      <!-- Sweet alert-->
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <!-- Sweet alert -->
+
+</head>
+
+<body>
+    <header class="cabecalho">
+        <a class="cabecalho-opcoes-botoes" href="#conteudo">Home</a>
+        <a class="cabecalho-opcoes-botoes" href="#sobre">Sobre</a>
+        <a class="cabecalho-opcoes-botoes" href="#criadora">Criadora</a>
+        <a class="cabecalho-opcoes-botoes" href="#simulador">Simulador</a>
+
+    </header>
+
+    <main class="conteudo" id="conteudo"> <!--Linha de divisão da navbar-->
+
+        <section class="conteudo-principal">
+
+            <div class="conteudo-imagem">
+                <img src="assets/1.png" alt="Business Woman Style">
+                <h3>A melhor versão de si mesma</h3>
+            </div>
+
+            <div class="conteudo-adicionar">
+                <div class="campo-email">
+                    <h3>E-mail:</h3><input id="input_email" placeholder="Exemplo@email">
+                </div>
+                <div class="campo-senha">
+                    <h3>Senha:</h3> <input id="input_senha" placeholder="********">
+                </div>
+                <div class="botoes">
+                    <button onclick="entrar()">Login</button>
+                    <button onclick="cadastro()"><a class="botoes" href="Cadastro.html">Cadastro</a></button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+
+    <div class="conteudo-sobre" id="sobre">
+        <img class="conteudo-sobre-imagem" src="assets/Imagem-sobre.jpg" alt="Modelo">
+        <h1 class="conteudo-sobre-texto">Sobre</h1>
+
+        <p>A Business Woman Style procura ajudar meninas e mulheres na busca da melhor versão de si mesma, no
+            crescimento
+            pessoal e profissional para ser uma protagonista. Com isso, você pode buscar por dicas de glow up e moda,
+            tutoriais com fácil acesso para seguir, indicações de produtos, descontos, lojas e também perfis de outras
+            mulheres inspiradoras. Sempre auxiliando na busca da melhor versão de si mesma, com práticas simples e
+            animadoras, para o seu incentivo.</p>
+    </div>
+
+
+
+    <div class="conteudo-site">
+        <h4>O que você <strong class="conteudo-site-titulo">encontrará no site?</strong></h4>
+        <p class="conteudo-site-encontra"><strong class="conteudo-site-titulo">Organização</strong> do seu dia a dia, com recomendações de hábitos
+            melhores;</p>
+            <p class="conteudo-site-encontra"><strong class="conteudo-site-titulo">Vestimenta</strong> adequada, informações inportantes para seu look
+                e fotos de inspiração de roupas;</p>
+                <p class="conteudo-site-encontra"><strong class="conteudo-site-titulo">Makeup</strong> com dicas para sua maquiagem, conselhos e
+                    tutoriais para uma boa make;</p>
+                    <p class="conteudo-site-encontra"><strong class="conteudo-site-titulo">Recomendações</strong> de lojas, produtos e mulheres de
+                        influência. Além de descontos de ofertas imperdíveis. </p>
+
+    </div>
+
+
+
+    <div>
+        <img class="conteudo-seta" src="assets/seta.png" alt="Para baixo">
+    </div>
+
+
+    <h4 class="utilizando-titulo">Utilizando o site, você irá:</h4>
+
+    <div class="conteudo-utilizando">
+        <div class="conteudo-box">
+            <p class="utilizando-texto">Desenvolver um novo estilo de vida repleto de <b> Hábitos</b> que
+                estarão te preparando para o sucesso.</p>
+        </div>
+        <div class="conteudo-box">
+            <p class="utilizando-texto">Se sentir melhor, mais forte mentamente e fisicamente.</p>
+        </div>
+        <div class="conteudo-box">
+            <p class="utilizando-texto">Você <strong class="conteudo-site-titulo">brilhará</strong> de dentro para fora!
+            </p>
+        </div>
+    </div>
+
+    <div id="criadora">
+        <h1 class="conteudo-sthe-titulo">Quem é Sthefanny Bertolon</h1>
+        <div class="conteudo-sthe">
+            <p class="conteudo-sthe-texto">Olá, eu sou a Sthefanny, moro em Osasco. Tenho 18 anos e sou universitaria,
+                atualmente cursando ADS.
+                Desde pequena sou apaixonada por moda, e o estilo Business Woman entrou na minha vida de forma bem
+                inusitada
+                e logo me identifiquei.
+                Estudando mais, percebi que não se trata de apenas se vestir de forma elegante e formal mas sim um
+                estilo de
+                vida. Onde você passa a buscar a melhor versão de si mesma.
+                Em um momento da minha vida eu era esse mulher desleixada, onde eu também ia pelo caminho "Pra que eu
+                vou me
+                preocupar com que roupa eu vou, ou ser agradavel, eu não devo ligar para opnião alheia".
+                Com o tempo eu percebi que defato devemos nós preocupar com nossa aparencia e hábitos para evoluirmos e
+                sermos pessoas melhores atingindo Nossa melhor versão.</p>
+            <img class="conteudo-sthe-img" src="assets/Sthe.jpg" alt="">
+        </div>
+    </div>
+
+
+    <div class="conteudo-simulador" id="simulador">
+        <h3 class="conteudo-simulador-titulo">Esse site faz sendido pra você? Para o que você quer? Para como você quer
+            ser vista?</h3>
+        <h2 class="conteudo-simulador-titulo">Faça uma <strong> simulação</strong></h2>
+        <p class="conteudo-simulador-texto">Respondas três perguntas que fazem com que você se conheca e conheça o
+            caminho que você quer. (Anote em um caderno ou bloco de notas)</p>
+        <p class="conteudo-simulador-texto">Quais são os 4 elogios que você mais gosta de receber?</p>
+        <p class="conteudo-simulador-texto">Quais são os 3 comentarios que você mais detesta?</p>
+        <p class="conteudo-simulador-texto">Quais os sentimentos que você quer que as pessoas tenham por você? (Coloque
+            quantos você quiser)</p>
+        <button onclick="simulador()">Ver resposta</button>
+        <div id="resposta" class="conteudo-simulador-texto"></div>
+    </div>
+
+
+
+    <div class="footer">
+        <div class="footer-nomefoto"> 
+            <img class="footer-bws" src="assets/3.png" alt="BW Style">
+        </div>
+        <div class="footer-nomefoto"> 
+            <img class="footer-icon" src="assets/icones/icon.insta.png"
+                alt="Instagram"><a>Sbertolon</a>
+        </div>
+        <div class="footer-nomefoto"> 
+            <img class="footer-icon" src="assets/icones/icon.pinterest.png"
+                alt="Pinterest"><a>Sbertolon</a>
+        </div>
+        <div class="footer-nomefoto"> 
+            <img class="footer-icon" src="assets/icones/icon.zap.png"
+                alt="WhatsApp"><a>(11) 99762-4104</a>
+        </div>
+        <div class="footer-nomefoto"> 
+            <img class="footer-icon" src="assets/icones/icon.google.png"
+                alt="E-mail"><a>sthefanny.fbertolon@gmail.com</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function simulador() {
+        var bom = input_bom.value;
+        var ruim = input_ruim.value;
+        var sentimento = input_sentimento.value;
+
+        
+        resposta.innerHTML = `Depois de tudo isso que você escreveu, faz sendido você buscar um estilo de vida melhor, ser protagionista da sua vida?
+Se sim, então busque conhecimento, no site da BW, em videos no youtube, em podcast, redes sociais, onde você quiser. A BW Style trás muitas dicas e conteudos para ajudar você nessa jornada.`
+    }
+
+    function entrar() {
+
+
+var emailVar = input_email.value;
+var senhaVar = input_senha.value;
+
+if (emailVar == "" || senhaVar == "") {
+    // cardErro.style.display = "block"
+    swal("Ops", "Preencha os campos para logar 😠!", "error")
+    finalizarAguardar();
+    return false;
+}
+else {
+    swal("Parábens", "Login realizado com sucesso redirecionando a tela do quiz 😄se divirta...!", "success");
+    setInterval('...', 2000)
+
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.idUsuario;
+
+                setTimeout(function () {
+                    window.location = "inicio.html";
+                }, 3000); // apenas para exibir o loading
+
+            });
+
+        } else {
+
+            swal("Ops", "Email e/ou senha inválido(s)", "error")
+
+            resposta.text().then(texto => {
+                console.error(texto);
+                finalizarAguardar(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+
+//function sumirMensagem() {
+//  cardErro.style.display = "none"
+// } 
+}  
+</script>

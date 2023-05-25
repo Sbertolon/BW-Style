@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    font-size: 100%;
+    background: rgb(240, 226, 190);
+}
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    gap: 1.6rem;
+    justify-content: end;
+    align-items: center;
+    margin-right: 2rem;
+}
+.cabecalho-opcoes-botoes {
+    font-family: 'DM serif display';
+    color: rgb(183, 176, 158);
+    font-weight: 300px;
+    font-size: 1rem;
+
+}
+.img{
+    height: 7rem;
+    width: 8rem;
+    margin-right: 62rem;
+}
+
+.conteudo {
+    margin-bottom: 48px;
+    border-top: 0.4px solid #f0b49e;
+    font-family: 'DM serif display';
+    color: #AFA999;
+    display: flex;
+    flex-direction: row;
+}
+
+.grafico-tudo {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-direction: row;
+   margin-top: 5rem;
+   gap: 2rem;
+  }
+
+
+  .grafico {
+    width: 28rem;
+    height: 18rem;
+  }
+.grafico-pizza{
+    height: 18rem;
+}
+
+  p{
+    display: flex;
+    justify-content: center;
+    color: rgb(235, 96, 119);
+    font-size: 2rem;
+  }
+
+  a{
+    display: flex;
+    justify-content: center;
+    color: #6b685f;
+  }
+
+  
