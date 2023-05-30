@@ -40,6 +40,14 @@
             <conteiner>
             <div class="produto-desconto">
                 <h2>Produtos com Desconto</h2>
+                <div class="container-slider">
+                    <button id="prev-button"><img src="../Public/assets/Botão_de_avançar-remove.png" alt="prev-button"></button>
+                    <div class="container-imagem">
+                        <img src="../Public/assets/Sthe.jpg" alt="oculos" class="slider on">
+                        <img src="../Public/assets/Imagem-sobre.jpg" alt="oculos" class="slider">
+                    </div>
+                    <button id="next-button"><img src="../Public/assets/Botão_de_avançar-remove.png" alt="next-button"></button>
+                </div>
                 <p>ijbkjbkjbkj</p>
             </div>
 
@@ -77,3 +85,45 @@
     
 </body>
 </html>
+<script>
+
+    // Funções do carrossel da page look e makeup
+    const slider = document.querySelectorAll('.slider');
+const btnPrev = document.getElementById('prev-button');
+const btnNext = document.getElementById('next-button');
+
+let currentSlide = 0;
+
+function hideSlider(){
+    slider.forEach(item => item.classList.remove('on'))
+}
+
+function showSlider(){
+    slider[currentSlide].classList.add('on')
+}
+
+function nextSlider(){
+    hideSlider()
+    if(currentSlide == slider.length -1){
+        currentSlide = 0
+    } else{
+        currentSlide++
+    }
+    showSlider()
+}
+function prevSlider(){
+    hideSlider()
+    if(currentSlide == 0){
+        currentSlide = slider.length -1
+    } else{
+        currentSlide--
+    }
+    showSlider()
+}
+
+
+btnPrev.addEventListener('click', prevSlider)
+btnNext.addEventListener('click', nextSlider)
+
+console.log(slider)
+</script>
