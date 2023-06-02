@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(limite_linhas) {
 
     instrucaoSql = ''
 
@@ -77,6 +77,8 @@ function buscarMedidasEmTempoReal1(idAquario) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+
 
 
 module.exports = {

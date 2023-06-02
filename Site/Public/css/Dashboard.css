@@ -71,4 +71,7 @@ body {
     color: #6b685f;
   }
 
-  
+  #myChart1 {
+    
+    display: block;
+  }
