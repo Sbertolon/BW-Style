@@ -99,6 +99,7 @@ input {
 p{
     width: 25rem;
 }
+
 p2{
     width: 15rem;
 }
@@ -182,9 +183,13 @@ gap: 3rem;
 #prev-button {
     transform: rotate(180deg);
 }
+ 
+#botoes button.curtido {
+    color:aqua;
+}
 
 h3{
-    color: #EB6077;
+    color: rgb(235, 96, 119);
 }
 
 h2{
