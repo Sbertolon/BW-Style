@@ -15,13 +15,15 @@
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
 </head>
 
-<body onload="obterDadosGrafico()",idade()>
+<body onload="idadeUser(), curtidaPost(), conhecimento()">
 
     <header class="cabecalho">
         <img class="img" src="../assets/2.png" alt="">
-        <a class="cabecalho-opcoes-botoes" href="Glowup.html">Glow up</a>
-        <a class="cabecalho-opcoes-botoes" href="Look.html">Look</a>
+        <a class="cabecalho-opcoes-botoes" href="../inicio.html">Glow up</a>
+        <a class="cabecalho-opcoes-botoes" href="../Look.html">Look</a>
         <a class="cabecalho-opcoes-botoes" href="./dashboard/Dashboard.html">Dashboard</a>
+        <a class="cabecalho-opcoes-botoes" href="../index.html">Sair</a>
+
 
     </header>
     <main class="conteudo" id="conteudo"></main>
@@ -33,17 +35,17 @@
 
         <div class="grafico">
             <a>Idade dos usuários</a>
-            <canvas id="myChart1"></canvas>
+            <canvas id="chartIdade"></canvas>
         </div>
 
         <div class="grafico-pizza">
             <a>Usuários que conhecem do assunto</a>
-            <canvas id="myChart2"></canvas>
+            <canvas id="chartconhecimento"></canvas>
         </div>
 
         <div class="grafico">
             <a>Número de curtida das postagens</a>
-            <canvas id="myChart3"></canvas>
+            <canvas id="chartcurtidas"></canvas>
         </div>
     </div>
 
@@ -53,23 +55,44 @@
 </html>
 <script>
 
-    let proximaAtualizacao;
-
-
- // grafico dois, com conhecimento dos usuários
-    function obterDadosGrafico() {
-
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
-
-
-        fetch(`/medidas/ultimas/`, { cache: 'no-store' }).then(function (response) {
+    var idade = [];
+    var qtdIdade = [];
+    function idadeUser() {
+        idade = [];
+        qtdIdade = [];
+        fetch(`/grafico/idade/`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    plotarGrafico(resposta);
 
+                    resposta.forEach(element => {
+                        console.log(element.total_usuarios)
+                        console.log(element.Idade)
+
+                        idade.push(element.Idade);
+                        qtdIdade.push(element.total_usuarios);
+                    });
+
+                    const ctx = document.getElementById('chartIdade');
+
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: idade,
+                            datasets: [{
+                                label: 'Idade Dos Usuarios',
+                                data: qtdIdade,
+                                borderWidth: 1,
+                                backgroundColor: "rgb(235, 96, 119)"
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                max: 20,
+                                min: 0
+                            }
+                        }
+                    });
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -80,148 +103,99 @@
             });
     }
 
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta) {
-        console.log('iniciando plotagem do gráfico...');
 
-        var dados = {
-            labels: [],
-            datasets: [
-                {
-                    label: '',
-                    data: []
-                },
-                {
-                    yAxisID: 'y-totalpersonagens',
-                    label: 'conhecimento dos usuários',
-                    fill: true,
-                    data: []
-                }
-            ],
-        };
+    
+    var curtidas = [];
+    var postagem = [];
+    function curtidaPost() {
+        curtidas = [];
+        postagem = [];
+        fetch(`/grafico/curtidas/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            dados.labels.push(registro.conhecimento);
-            dados.datasets[0].data.push(registro.conhecimento);
-            dados.datasets[1].data.push(registro.voto);
-            console.log(registro.conhecimento);
-        }
+                    resposta.forEach(element => {
+                        console.log(element)
+                        console.log(element)
 
-        var conhecimentoSim = "Sim";
-        var conhecimentoNao = "Não";
+                        curtidas.push(element.qtdCurtidas);
+                        postagem.push(element.Descricao);
+                    });
 
-        console.log(JSON.stringify(dados));
+                    const ctx = document.getElementById('chartcurtidas');
 
-        const ctx = document.getElementById('myChart2');
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: [conhecimentoSim, conhecimentoNao],
-                datasets: [{
-                    label: 'Conhecimento',
-                    data: [dados.datasets[1].data[0], dados.datasets[1].data[1], 0.000000001],
-                    borderWidth: 1,
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        ticks: {
-                            min: 0,
-                            max: 15
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels:[postagem[0], 'Itens inverno', postagem[2]],
+                            datasets: [{
+                                label: 'Postagens mais curtidas',
+                                data: curtidas,
+                                borderWidth: 1,
+                                backgroundColor: "rgb(235, 96, 119)"
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                max: 20,
+                                min: 0
+                            }
                         }
-                    }
-                }
+                    });
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
             }
-        });
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
 
 
-//  // grafico 1
-//     function obterDadosGrafico() {
+    var conhecimento_assunto = [];
+    var voto = [];
+    function conhecimento() {
+        conhecimento_assunto = [];
+        voto = [];
+        fetch(`/grafico/conhecimento/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-// if (proximaAtualizacao != undefined) {
-//     clearTimeout(proximaAtualizacao);
-// }
+                    resposta.forEach(element => {
+                        console.log(element)
 
+                        conhecimento_assunto.push(element.conhecimento);
+                        voto.push(element.voto);
+                    });
 
-// fetch(`/medidas/idade/`, { cache: 'no-store' }).then(function (response) {
-//     if (response.ok) {
-//         response.json().then(function (resposta) {
-//             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-//             plotarGrafico(resposta);
+                    const ctx = document.getElementById('chartconhecimento');
 
-//         });
-//     } else {
-//         console.error('Nenhum dado encontrado ou erro na API');
-//     }
-// })
-//     .catch(function (error) {
-//         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-//     });
-// }
+                    new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: conhecimento_assunto,
+                            datasets: [{
+                                label: 'Conhecimento do Usuários',
+                                data: voto,
+                                borderWidth: 1,
+                                backgroundColor: ['rgb(235, 96, 119)',
+                                'rgb(54, 162, 235)']
+                            }]
+                        },
+                        hoverOffset: 2
+                    });
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
 
-// function plotarGrafico(resposta) {
-// console.log('iniciando plotagem do gráfico...');
-
-// var dados = {
-//     labels: [],
-//     datasets: [
-//         {
-//             label: '',
-//             data: []
-//         },
-//         {
-//             yAxisID: 'y-totalpersonagens',
-//             label: 'Número de usuário com determinada idade',
-//             fill: true,
-//             data: []
-//         }
-//     ],
-// };
-
-// for (i = 0; i < resposta.length; i++) {
-//     var registro = resposta[i];
-//     dados.labels.push(registro.conhecimento);
-//     dados.datasets[0].data.push(registro.conhecimento);
-//     dados.datasets[1].data.push(registro.voto);
-//     console.log(registro.conhecimento);
-// }
-
-// var conhecimentoSim = "Sim";
-// var conhecimentoNao = "Não";
-
-// console.log(JSON.stringify(dados));
-
-// const ctx = document.getElementById('myChart1');
-
-// new Chart(ctx, {
-//     type: 'line',
-//     data: {
-//         labels: [conhecimentoSim, conhecimentoNao],
-//         datasets: [{
-//             label: 'Idade',
-//             data: [dados.datasets[1].data[0], dados.datasets[1].data[1], 0.000000001],
-//             borderWidth: 1,
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             y: {
-//                 ticks: {
-//                     min: 0,
-//                     max: 15
-//                 }
-//             }
-//         }
-//     }
-// });
-// }
-
-  
 </script>

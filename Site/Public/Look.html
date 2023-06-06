@@ -14,9 +14,11 @@
 
     <header class="cabecalho">
         <img class="img" src="assets/2.png" alt="">
-        <a class="cabecalho-opcoes-botoes" href="Glowup.html">Glow up</a>
+        <a class="cabecalho-opcoes-botoes" href="inicio.html">Glow up</a>
         <a class="cabecalho-opcoes-botoes" href="Look.html">Look</a>
         <a class="cabecalho-opcoes-botoes" href="./dashboard/Dashboard.html">Dashboard</a>
+        <a class="cabecalho-opcoes-botoes" href="../index.html">Sair</a>
+
 
     </header>
 
@@ -24,7 +26,7 @@
 
 
         <div class="postagem-tudo">
-            
+
             <div class="postagem1">
                 <h1>Calça jeans</h1>
                 <p>É comum deixarmos de usar a calça jeans, por termos receio de perder a elegancia do look. Entretando,
@@ -92,6 +94,8 @@
                     <!-- <button onclick="curtir(this)">Curtir</button> -->
                 </div>
 
+                
+
             </div>
         </div>
 
@@ -112,7 +116,7 @@
                 </div>
                 <p2>Óculos da loja <a class="links" target="_blank"
                         href="https://br.pinterest.com/pin/668925350915787524/">LD acessórios</a> com desconto!</p>
-                    <div id="valor-descontado"></div>
+                    <div id="valordescontado"></div>
             </div>
 
 
@@ -159,6 +163,12 @@
 </html>
 <script>
 
+    // valor conta do carrossel
+    var valor = 85;
+    var valor_descontado = valor / (0.05 * 100);
+    var total = valor - valor_descontado
+    valordescontado.innerHTML = `O óculos que estava por R$${valor},00 agora está saindo por R$${total},00.`
+
     // Funções do carrossel da page look e makeup
     const slider = document.querySelectorAll('.slider');
     const btnPrev = document.getElementById('prev-button');
@@ -201,25 +211,25 @@
 
 
 
-    document.addEventListener('DOMContentLoaded', () =>{ 
+    document.addEventListener('DOMContentLoaded', () => {
         fetch(`/medidas/exibir_usuario_curtida/${sessionStorage.ID_USUARIO}`, {
-                method: "get"
-            }).then(function (resposta) {
-                if (resposta.ok) {
-                    resposta.json().then((json) => {
-                        console.log(json)
-                       json.forEach(linha => {    // para cada linha faça:
+            method: "get"
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then((json) => {
+                    console.log(json)
+                    json.forEach(linha => {    // para cada linha faça:
 
                         var botao = document.getElementById(`botoes${linha.idPostagem}`)
-                        if(linha.usuario_curtiu == 0){
+                        if (linha.usuario_curtiu == 0) {
                             botao.innerHTML = `<button idPostagem='${linha.idPostagem}' onclick="curtir(this)">Curtir</button>`
-                        } else{
+                        } else {
                             botao.innerHTML = `<button idPostagem='${linha.idPostagem}' onclick="curtir(this)" class="curtido" >Curtir</button>`
                         }
-                       });
-                    })
-                }
-            })
+                    });
+                })
+            }
+        })
     })
 
     function curtir(botao) {
@@ -234,7 +244,7 @@
                     "Content-Type": "application/json"
                 }
             }).then(function (resposta) {
-                 
+
                 if (resposta.ok) {
                     window.alert("Você descurtiu a postagem!");
                 } else if (resposta.status == 404) {
@@ -277,6 +287,6 @@
             botao.classList.add('curtido')
 
         }
-     }
+    }
 
 </script>

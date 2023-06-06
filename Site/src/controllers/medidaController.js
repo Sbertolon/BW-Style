@@ -1,23 +1,5 @@
 var medidaModel = require("../models/medidaModel");
 
-function buscarUltimasMedidas(req, res) {
-
-    const limite_linhas = 7;
-
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-
-    medidaModel.buscarUltimasMedidas(limite_linhas).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
 
 
 function buscarMedidasEmTempoReal(req, res) {
@@ -39,8 +21,6 @@ function buscarMedidasEmTempoReal(req, res) {
     });
 }
 
-
-
 function buscarMedidasEmTempoReal1(req, res) {
 
     var idAquario = req.params.idAquario;
@@ -48,25 +28,6 @@ function buscarMedidasEmTempoReal1(req, res) {
     console.log(`Recuperando medidas em tempo real`);
 
     medidaModel.buscarMedidasEmTempoReal1(idAquario).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
-function idade(req, res) {
-
-    var idAquario = req.params.idAquario;
-
-    console.log(`Recuperando medidas em tempo real`);
-
-    medidaModel.idade(idAquario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -103,6 +64,7 @@ function curtir(req, res) {
             );
     }
 }
+
 function descurtir(req, res) {
     var fkUsuario = req.params.fkUsuario;
     var fkPostagem = req.params.fkPostagem;
@@ -148,12 +110,8 @@ function exibir_usuario_curtida(req, res) {
 }
 
 module.exports = {
-    buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    buscarMedidasEmTempoReal1,
-    idade,
     curtir,
     descurtir,
     exibir_usuario_curtida
-
 }
