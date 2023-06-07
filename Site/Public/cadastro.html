@@ -53,7 +53,7 @@
 
         if (nomeVar == "" ||idadeVar==""|| emailVar == "" || senhaVar == "" || conhecimentoVar == "") {
             //cardErro.style.display = "block"
-            swal("Ops", "Preencha todos os campos 😠", "error")
+            swal("Ops", "Preencha todos os campos", "error")
 
 
 
@@ -61,13 +61,13 @@
             return false;
         }
         else if (nomeVar.length < 3) {
-            swal("Ops", "O nome inserido é muito curto. Por favor, insira um nome com pelo menos 8 caracteres 😠", "warning")
+            swal("Ops", "O nome inserido é muito curto. Por favor, insira um nome com pelo menos 3 caracteres ", "warning")
         }
         else if (emailVar.indexOf("gmail") == -1 || emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1 || emailVar.length < 12) {
-            swal("Ops", "O e-mail cadastrado é inválido. Por favor, insira um e-mail com GMAIL 😠", "warning")
+            swal("Ops", "O e-mail cadastrado é inválido. Por favor, insira um e-mail utilizando GMAIL", "warning")
         }
         else if (senhaVar.length < 3) {
-            swal("Ops", "A senha inserida é muito curta. Por favor,insira uma senha com pelo menos 8 caracteres 😠", "warning")
+            swal("Ops", "A senha inserida é muito curta. Por favor,insira uma senha com pelo menos 3 caracteres", "warning")
         }
         else {
             setInterval('oi', 5000)
@@ -94,7 +94,7 @@
 
                 if (resposta.ok) {
                     //cardErro.style.display = "block";
-                    swal("Parábens", "Cadastro realizado com sucesso redirecionando a tela de login 😄...!", "success");
+                    swal("Parábens", "Cadastro realizado com sucesso", "success");
 
 
                     setTimeout(() => {
@@ -104,7 +104,7 @@
                     limparFormulario();
                     finalizarAguardar();
                 } else {
-                    swal("Ops", "Mais de um usuário com o mesmo login e senha 😭!")
+                    swal("Ops", "Mais de um usuário com o mesmo login e senha")
                 }
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
